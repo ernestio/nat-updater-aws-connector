@@ -136,7 +136,7 @@ func updateNat(ev *Event) error {
 		}
 
 		if routeTableIsConfigured(rt, ev.NatGatewayAWSID) {
-			return nil
+			continue
 		}
 
 		err = createNatGatewayRoutes(svc, rt, ev.NatGatewayAWSID)
