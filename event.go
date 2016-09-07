@@ -67,7 +67,7 @@ func (ev *Event) Validate() error {
 func (ev *Event) Process(data []byte) error {
 	err := json.Unmarshal(data, &ev)
 	if err != nil {
-		nc.Publish("nat.create.aws.error", data)
+		nc.Publish("nat.update.aws.error", data)
 	}
 	return err
 }
@@ -81,7 +81,7 @@ func (ev *Event) Error(err error) {
 	if err != nil {
 		log.Panic(err)
 	}
-	nc.Publish("nat.create.aws.error", data)
+	nc.Publish("nat.update.aws.error", data)
 }
 
 // Complete the request
@@ -90,5 +90,5 @@ func (ev *Event) Complete() {
 	if err != nil {
 		ev.Error(err)
 	}
-	nc.Publish("nat.create.aws.done", data)
+	nc.Publish("nat.update.aws.done", data)
 }

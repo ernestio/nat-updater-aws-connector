@@ -151,8 +151,8 @@ func updateNat(ev *Event) error {
 func main() {
 	nc = ecc.NewConfig(os.Getenv("NATS_URI")).Nats()
 
-	fmt.Println("listening for nat.create.aws")
-	nc.Subscribe("nat.create.aws", eventHandler)
+	fmt.Println("listening for nat.update.aws")
+	nc.Subscribe("nat.update.aws", eventHandler)
 
 	runtime.Goexit()
 }
