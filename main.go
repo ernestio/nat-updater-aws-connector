@@ -130,7 +130,7 @@ func updateNat(ev *Event) error {
 	})
 
 	for _, networkID := range ev.RoutedNetworkAWSIDs {
-		rt, err := createRouteTable(svc, ev.DatacenterVPCID, networkID)
+		rt, err := createRouteTable(svc, ev.VPCID, networkID)
 		if err != nil {
 			return err
 		}
